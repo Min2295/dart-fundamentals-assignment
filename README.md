@@ -1,5 +1,3 @@
-# dart-fundamentals-assignment
-
 # Dart Fundamentals Assignment
 
 This repository contains solutions for two programming tasks implemented using the Dart programming language. The goal of the assignment is to demonstrate understanding of Dart fundamentals including collections, functions, object-oriented programming, and asynchronous programming.
