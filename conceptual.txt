@@ -1,0 +1,44 @@
+TASK 1 — Conceptual Questions
+
+Q1. What is the difference between a List<int> and a List<dynamic> in Dart? Why is it usually better to use a typed list like List<int>?
+
+    A List<int> stores only integer values, while List<dynamic> can store values of any data type such as integers, strings, booleans, or objects. Using List<int> is usually better because it provides type safety. This means the compiler ensures that only integers can be stored in the list, which helps prevent errors during program execution and makes the code easier to understand and maintain.
+
+Q2.In your findMax() function, why is it important to initialize your 'running maximum' variable to the first element of the list rather than to 0 or to a very small number? What could go wrong with the other approaches?
+
+    The running maximum should be initialized with the first element of the list because that value is guaranteed to be part of the data being analyzed. If the maximum were initialized with a fixed value such as 0, the result might be incorrect when the list contains only negative numbers. For example, if all numbers are negative and the initial maximum is set to 0, the function would incorrectly return 0 even though 0 does not exist in the list.
+
+Q3. Your calculateAverage() function calls calculateSum() internally. What software design principle does this demonstrate, and why is reusing existing functions preferable to duplicating code?
+
+    Calling calculateSum() inside calculateAverage() demonstrates the principle of code reuse and modular programming. Instead of repeating the logic to compute the sum of numbers again, the program reuses the existing function. This reduces duplication, improves readability, and makes the code easier to maintain.
+
+Q4. Describe in plain English what the for-in loop syntax does in Dart. How is it different from a traditional for loop with an index? When would you prefer one over the other?
+
+    The for-in loop in Dart iterates directly through each element of a collection such as a list. It automatically retrieves each value one by one without using an index. A traditional for loop uses an index variable to access elements by their position. The for-in loop is usually simpler and easier to read when only the values are needed, while the traditional for loop is useful when the index position is also required.
+
+Q5. If someone calls your findMax() function with an empty list, what happens? How could you modify the function to handle that case safely?
+
+
+    If findMax() is called with an empty list, the program will produce an error because there is no first element to initialize the running maximum. To prevent this issue, the function should check whether the list is empty before performing calculations. If the list is empty, the program can either return null, display an error message, or throw an exception indicating that the operation cannot be performed.
+
+TASK 2 — Conceptual Questions
+
+Q6. What is the difference between a synchronous function and an asynchronous function in Dart? In your Calculator class, why is divide() synchronous while computeAsync() is asynchronous?
+
+    A synchronous function executes immediately and returns its result directly. The program waits until the function finishes before moving to the next line of code. In contrast, an asynchronous function performs tasks that may take time, such as network requests or file operations, and returns a Future instead of an immediate value. The program can continue executing other instructions while waiting for the asynchronous task to complete.
+
+Q7. Explain the purpose of the await keyword in Dart. What happens if you forget to use await when calling an async function that returns a Future? What does your program print instead of the result?
+
+    The await keyword is used inside an asynchronous function to pause execution until the Future completes and returns its result. It allows the program to work with the actual value returned by the asynchronous operation. If await is not used, the program receives a Future object instead of the final result, which can lead to incorrect output or unexpected behavior.
+
+Q8.  What is the purpose of the try-catch block in your displayResult() method? What would happen if you removed it and then called displayResult(10, 0, 'divide')?
+
+    The try-catch block is used to handle errors that may occur during the execution of asynchronous operations. In the calculator program, errors can occur when dividing by zero or when an invalid operation is provided. Using try-catch prevents the program from crashing and allows it to display a meaningful error message instead.
+
+Q9. Why is it good design to have divide() throw an ArgumentError rather than simply returning 0 or printing an error inside the divide() method itself? What principle of function design does this reflect?
+
+    Throwing an ArgumentError is better because it clearly indicates that an invalid argument was passed to the function. Returning 0 could mislead the user into thinking that the result of the division is actually zero, which would be incorrect. By throwing an error, the program communicates that the operation cannot be performed due to invalid input.
+
+Q10.. What does the async keyword on main() allow you to do? Could this assignment have been written without making main() async?
+
+    The main() function is marked as async so that it can use the await keyword when calling asynchronous methods. This allows the program to wait for the results of asynchronous operations such as computeAsync() before continuing execution. Without marking main() as async, the program would not be able to use await and handling asynchronous operations would become more complicated.
